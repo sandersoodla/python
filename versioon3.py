@@ -43,7 +43,6 @@ def motion(event):
         global xvana, yvana
         if xvana != None and yvana != None:
             event.widget.create_line(xvana, yvana, event.x, event.y, smooth='TRUE')
-        
         xvana = event.x
         yvana = event.y
 
