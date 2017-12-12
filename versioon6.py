@@ -62,7 +62,7 @@ def motion(event):
             objectlist.append(event.widget.create_rectangle(event.x, event.y, event.x+1, event.y+1, outline=värv[1], width=pLaius.get()))
             print(len(objectlist))
         if riist == "k":
-            event.widget.create_rectangle(event.x, event.y, event.x+1, event.y+1, outline='white', width=20)
+            event.widget.create_rectangle(event.x, event.y, event.x+1, event.y+1, outline='white', width=pLaius.get())
         
 joonistamine()
 window.mainloop()
