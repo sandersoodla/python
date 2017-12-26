@@ -5,46 +5,49 @@ from tkinter.colorchooser import *
 
 window = tkinter.Tk()
 window.title("Tahvel")
-window.geometry("1000x600")
+window.geometry("1200x800")
 window.configure(background='grey')
 
-frame1 = Frame()
-
 riist = "p"
-objectlist = []
 
 def pliiats():
     global riist
     riist = "p"
+    
+frame1 = tkinter.Frame(width=400, height=100, bg='lightblue')
+frame1.pack(anchor='nw', fill='x')
 
-Pnupp = tkinter.Button(window, text="Pliiats", width=18, command = pliiats)
-Pnupp.pack(side="left", anchor="nw", padx=4)
+frame2 = tkinter.Frame(width=2000, height=2000)
+frame2.pack(side="bottom")
 
-pLaius = tkinter.Scale(window, from_=0, to=100, orient="horizontal", length=150)
-pLaius.pack(side="left", anchor="nw", padx=4)
+Pnupp = tkinter.Button(frame1, text="Pliiats", width=18, command = pliiats)
+Pnupp.pack(anchor='nw', side="left")
+
+pLaius = tkinter.Scale(frame1, from_=0, to=100, orient="horizontal", length=150)
+pLaius.pack(anchor='nw', side="left")
 
 def kustut():
     global riist
     riist = "k"
 
-Knupp = tkinter.Button(window, text="Kustutuskumm", width=18, command = kustut)
-Knupp.pack(side="left", anchor="nw", padx=4)
+Knupp = tkinter.Button(frame1, text="Kustutuskumm", width=18, command = kustut)
+Knupp.pack(anchor='nw', side="left")
 
 def getColor():
     global värv
     värv=askcolor()
 
-värvivalik = tkinter.Button(text="Vali värv", width=18, command = getColor)
-värvivalik.pack(side="left", anchor='nw', padx=4)
+värvivalik = tkinter.Button(frame1, text="Vali värv", width=18, command = getColor)
+värvivalik.pack(anchor='nw', side="left")
 
 def deleteall():
     tahvel.delete("all")
 
-Breset = tkinter.Button(window, text="RESET", width=18, command = deleteall)
-Breset.pack(side="top", anchor="n")
+Breset = tkinter.Button(frame1, text="RESET", width=18, command = deleteall)
+Breset.pack(anchor='nw',padx=50)
 
-tahvel = tkinter.Canvas(window, width= 2000, height= 2000, background='white')
-tahvel.pack(side="bottom")
+tahvel = tkinter.Canvas(frame2, width= 2000, height= 2000, background='white')
+tahvel.pack(anchor='nw')
 
 b1 = "up"
 xvana, yvana = None, None
@@ -68,8 +71,7 @@ def motion(event):
     if b1 == "all":
         global riist, värv
         if riist == "p":
-            objectlist.append(event.widget.create_polygon(event.x, event.y, event.x+1, event.y+1, outline=värv[1], width=pLaius.get()))
-            print(len(objectlist))
+            event.widget.create_polygon(event.x, event.y, event.x+1, event.y+1, outline=värv[1], width=pLaius.get())
         if riist == "k":
             event.widget.create_polygon(event.x, event.y, event.x+1, event.y+1, outline="white", width=pLaius.get())
         
