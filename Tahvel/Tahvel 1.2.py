@@ -102,7 +102,6 @@ xuus, yuus = None, None
 def hiirInput():
     global riist
     tahvel.bind("<Motion>", motion)
-    tahvel.bind("<B1-Motion>", b1motion)
     tahvel.bind("<Button-1>", b1alla)
     tahvel.bind("<ButtonRelease-1>", b1üles)
     tahvel.bind("<Button-3>", b3alla)
@@ -116,10 +115,6 @@ def b1alla(event):
         xvana = event.x
         yvana = event.y
 
-def b1motion(event):
-    global b1, xuus, yuus
-    b1 = "all"
-        
 def b1üles(event):
     global b1, xuus, yuus
     b1 = "üleval"
