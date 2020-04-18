@@ -12,7 +12,7 @@ riist = "p"
 värv = ((0.1, 0.1, 0.1), '#000000')
 #kursor = "pencil"
 
-frame1 = tkinter.Frame(width=200, height=100, bg='lightblue')
+frame1 = tkinter.Frame(width=200, height=100, bg='lightgrey')
 frame1.pack(anchor='nw', fill='x')
 #loob raami menüüriba jaoks
 
